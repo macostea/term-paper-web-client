@@ -1,0 +1,9 @@
+<div class="row marketing">
+  <div ng-controller="MainCtrl">
+    <ul>
+      <li ng-repeat="user in users">
+        {{ user.name + ", " + user.email + ", " + user._id }}
+      </li>
+    </ul>
+  </div>
+</div>
