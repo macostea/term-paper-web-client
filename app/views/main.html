@@ -1,9 +1,25 @@
 <div class="row marketing">
   <div ng-controller="MainCtrl">
+    <h1>Users</h1>
     <ul>
       <li ng-repeat="user in users">
-        {{ user.name + ", " + user.email + ", " + user._id }}
+        {{ user }}
       </li>
     </ul>
+
+    <h1>Accounts</h1>
+    <ul>
+      <li ng-repeat="account in accounts">
+        {{ account }}
+      </li>
+    </ul>
+
+    <h1>Transactions</h1>
+    <ul>
+      <li ng-repeat="transaction in transactions">
+        {{ transaction }}
+      </li>
+    </ul>
+
   </div>
 </div>

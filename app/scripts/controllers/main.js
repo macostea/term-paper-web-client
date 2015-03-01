@@ -8,9 +8,8 @@
  * Controller of the termPaperClientApp
  */
 angular.module('termPaperClientApp')
-  .controller('MainCtrl', function ($scope, $http) {
-    // $http.get('https://term-paper-backend.herokuapp.com/users').
-    // success(function(data) {
-    //   $scope.users = data;
-    // });
+  .controller('MainCtrl', function ($scope, Users, Accounts, Transactions) {
+    $scope.users = Users.query();
+    $scope.accounts = Accounts.query();
+    $scope.transactions = Transactions.query();
   });

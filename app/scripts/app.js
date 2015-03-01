@@ -17,7 +17,10 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.bootstrap',
-    'validation.match'
+    'validation.match',
+    'userServices',
+    'accountServices',
+    'transactionServices'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -36,6 +39,10 @@ angular
       .when('/register', {
         templateUrl: 'views/register.html',
         controller: 'RegisterCtrl'
+      })
+      .when('/administer/users', {
+        templateUrl: 'views/administer/administerUsers.html',
+        controller: 'AdministerUsersCtrl'
       })
       .otherwise({
         redirectTo: '/'

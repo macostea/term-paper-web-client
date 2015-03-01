@@ -21,30 +21,29 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
-      <div class="navbar navbar-default" ng-controller="HeaderCtrl" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
+    <div class="header col-sm-12 col-lg 12">
+      <div class="navbar navbar-inverse" ng-controller="HeaderCtrl" role="navigation">
+        <div class="navbar-header">
 
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
 
-            <a class="navbar-brand" href="#/">termPaperClient</a>
-          </div>
+          <a class="navbar-brand" href="#/">termPaperClient</a>
+        </div>
 
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
+        <div class="collapse navbar-collapse navbar-ex2-collapse" id="js-navbar-collapse">
 
-            <ul class="nav navbar-nav">
-              <li ng-class="{active:isActive('/')}"><a href="#/">Home</a></li>
-              <li ng-class="{active:isActive('/about')}"><a ng-href="#/about">About</a></li>
-              <li ng-class="{active:isActive('/login')}"><a ng-href="#/login">Login</a></li>
-              <li ng-class="{active:isActive('/register')}"><a ng-href="#/register">Register</a></li>
-            </ul>
-          </div>
+          <ul class="nav navbar-nav">
+            <li ng-class="{active:isActive('/')}"><a href="#/">Home</a></li>
+            <li ng-class="{active:isActive('/about')}"><a href="#" ng-href="#/about">About</a></li>
+            <li ng-class="{active:isActive('/login')}"><a href="#" ng-href="#/login">Login</a></li>
+            <li ng-class="{active:isActive('/register')}"><a href="#" ng-href="#/register">Register</a></li>
+            <li ng-class="{active:isActive('/administer/users')}"><a href="#" ng-href="#/administer/users">Administer Users</a></li>
+          </ul>
         </div>
       </div>
     </div>
@@ -91,6 +90,8 @@
         <script src="scripts/controllers/login.js"></script>
         <script src="scripts/controllers/register.js"></script>
         <script src="scripts/controllers/header.js"></script>
+        <script src="scripts/controllers/administer/administerUsers.js"></script>
+        <script src="scripts/services.js"></script>
         <!-- endbuild -->
 </body>
 </html>
