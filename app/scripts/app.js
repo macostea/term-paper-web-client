@@ -47,4 +47,8 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+  })
+  .run(function($rootScope) {
+    $rootScope.backendURL = "https://term-paper-backend-macostea.c9.io";
+    // $rootScope.backendURL = "https://term-paper-backend.herokuapp.com";
   });

@@ -8,9 +8,9 @@
  * Controller of the termPaperClientApp
  */
 angular.module('termPaperClientApp')
-  .controller('RegisterCtrl', function ($scope, $http) {
+  .controller('RegisterCtrl', function ($scope, $http, $rootScope) {
     $scope.register = function (user) {
-      $http.post('https://term-paper-backend.herokuapp.com/api/register', user).
+      $http.post($rootScope.backendURL + '/api/register', user).
       success(function(data, status, headers, config) {
         $scope.registerMessage = data;
       }).
