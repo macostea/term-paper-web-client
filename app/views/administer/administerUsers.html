@@ -7,7 +7,7 @@
         </div>
         <div class="col-md-6 v-center">
           <h2 class="text-right">
-            <a class="btn btn-primary" data-toggle="modal" data-target="#addUserDialog"><i class="fa fa-plus"></i> Add</a>
+            <a class="btn btn-primary" ng-click="openAddUserDialog()"><i class="fa fa-plus"></i> Add</a>
           </h2>
         </div>
       </div>
@@ -25,10 +25,10 @@
               <tr ng-repeat="user in users">
                 <td>{{user.name}}</td>
                 <td>{{user.email}}</td>
-                <td>{{user.accounts}}</td>
+                <td><a class="btn btn-info" ng-click="openAccountsViewForUser(user)"><i class="fa fa-credit-card"</i> Manage accounts</a></td>
                 <td>
-                  <a class="btn btn-warning"><i class="fa fa-pencil"></i></a>
-                  <a class="btn btn-danger" ng-click="delete('{{user._id}}')"><i class="fa fa-minus"></i></a>
+                  <a class="btn btn-warning" ng-click="openUpdateUserDialog(user)"><i class="fa fa-pencil"></i> Update</a>
+                  <a class="btn btn-danger" ng-click="delete(user)"><i class="fa fa-minus"></i> Delete</a>
                 </td>
               </tr>
             </tbody>
@@ -37,49 +37,3 @@
     </div>
   </div>
 </div>
-
-<div class="modal fade" id="addUserDialog" tabindex="-1" role="dialog" aria-labelledby="addUserDialogLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="addUserDialogLabel">Add user</h4>
-      </div>
-      <div class="modal-body">
-        <form class="formRegister" name="formRegister" novalidate>
-          <div class="form-group has-feedback" ng-class="{'has-error':formRegister.name.$dirty && formRegister.name.$invalid && formRegister.name.$error.required}">
-              <label for="name" class="sr-only">Name</label>
-              <input type="text" id="name" name="name" class="form-control" placeholder="Name" required autofocus ng-model="user.name">
-              <span class="fa fa-times form-control-feedback" ng-show="formRegister.name.$dirty && formRegister.name.$invalid && formRegister.name.$error.required">
-              </span>
-          </div>
-
-          <div class="form-group has-feedback" ng-class="{'has-error':formRegister.email.$dirty && formRegister.email.$invalid && (formRegister.email.$error.required || formRegister.email.$error.email)}">
-              <label for="email" class="sr-only">Email</label>
-              <input type="email" name="email" id="email" class="form-control" placeholder="Email" required ng-model="user.email">
-              <span class="fa fa-times form-control-feedback" ng-show="formRegister.email.$dirty && formRegister.email.$invalid && (formRegister.email.$error.required || formRegister.email.$error.email)">
-              </span>
-          </div>
-
-          <div class="form-group has-feedback" ng-class="{'has-error':formRegister.password.$dirty && formRegister.password.$invalid && formRegister.password.$error.required}">
-              <label for="password" class="sr-only">Password</label>
-              <input type="password" name="password" id="password" class="form-control" placeholder="Password" ng-model="user.password" ng-class="{'ng-invalid':formRegister.passwordRepeat.$error.match}" required>
-              <span class="fa fa-times form-control-feedback" ng-show="formRegister.password.$dirty && formRegister.password.$invalid && formRegister.password.$error.required">
-              </span>
-          </div>
-
-          <div class="form-group has-feedback" ng-class="{'has-error':formRegister.passwordRepeat.$dirty && formRegister.passwordRepeat.$error.match}">
-              <label for="passwordRepeat" class="sr-only">Repeat password</label>
-              <input type="password" name="passwordRepeat" id="passwordRepeat" class="form-control" placeholder="Password" ng-model="user.passwordRepeat" data-match="user.password">
-              <span class="fa fa-times form-control-feedback" ng-show="formRegister.passwordRepeat.$dirty && formRegister.passwordRepeat.$error.match">
-              </span>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" ng-click="register(user)" ng-disabled="(formRegister.$dirty && formRegister.$invalid) || formRegister.$pristine" data-dismiss="modal">Add</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->

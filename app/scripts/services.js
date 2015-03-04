@@ -6,7 +6,14 @@ var transactionServices = angular.module('transactionServices', ['ngResource']);
 
 userServices.factory('Users', ['$resource', '$rootScope',
   function($resource, $rootScope) {
-    return $resource($rootScope.backendURL + '/api/users/:userId');
+    return $resource($rootScope.backendURL + '/api/users/:userId', null,
+    {
+      'update': { method: 'PUT' },
+      'accounts': { method: 'GET',
+                    url: $rootScope.backendURL + '/api/users/:userId/accounts',
+                    isArray: true
+                  }
+    });
   }])
 
 accountServices.factory('Accounts', ['$resource', '$rootScope',
