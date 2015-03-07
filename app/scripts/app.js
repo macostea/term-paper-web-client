@@ -40,6 +40,10 @@ angular
         templateUrl: 'views/administer/administerUsers.html',
         controller: 'AdministerUsersCtrl'
       })
+      .when('/administer/account', {
+        templateUrl: '../views/administer/administerAccount.html',
+        controller: 'AdministerAccountCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

@@ -1,0 +1,39 @@
+<div class="container">
+  <div ng-controller="AdministerAccountCtrl">
+    <div class="panel panel-primary col-md-4">
+      <h2 class="panel-heading">Account details</h2>
+      <form class="formAccount" name="formAccount" novalidate>
+        <div class="form-group has-feedback" ng-class="{'has-error':formAccount.id.$dirty && formAccount.id.$invalid && formAccount.id.$error.required}">
+          <label for="id">Account ID</label>
+          <input type="text" id="id" name="id" class="form-control" placeholder="Account ID" required autofocus ng-model="account._id">
+            <span class="fa fa-times form-control-feedback" ng-show="formAccount.id.$dirty && formAccount.id.$invalid && formAccount.id.$error.required">
+            </span>
+        </div>
+      </form>
+      <span>Current funds: {{account.currentFunds}}</span>
+
+    </div>
+
+    <div class="panel panel-primary col-md-7 col-md-offset-1">
+      <h2 class="panel-heading">Transaction report</h2>
+      <table class="table table-striped table-hover" data-effect="fade">
+        <thead>
+        <tr>
+          <th>Source ID</th>
+          <th>Destination ID</th>
+          <th>Date</th>
+          <th>Amount</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="transaction in account.pastTransactions">
+          <td>{{transaction.source._id}}</td>
+          <td>{{transaction.destination._id}}</td>
+          <td>{{transaction.date}}</td>
+          <td>{{transaction.amount}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

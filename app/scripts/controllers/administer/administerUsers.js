@@ -8,7 +8,7 @@
  * Controller of the termPaperClientApp
  */
 angular.module('termPaperClientApp')
-  .controller('AdministerUsersCtrl', function ($scope, $modal, Users) {
+  .controller('AdministerUsersCtrl', function ($scope, $modal, $location, Users, UserAccountsService) {
     $scope.users = Users.query();
 
     $scope.delete = function(userToDelete) {
@@ -19,7 +19,7 @@ angular.module('termPaperClientApp')
           $scope.users.splice(i, 1);
         }
       }
-    }
+    };
 
     $scope.openAddUserDialog = function() {
       $scope.formActionName = 'Add';
@@ -38,7 +38,7 @@ angular.module('termPaperClientApp')
         controller: 'AdministerUsersCtrl',
         scope: $scope
         });
-    }
+    };
 
     $scope.register = function(user) {
       var newUserResource = new Users();
@@ -50,7 +50,7 @@ angular.module('termPaperClientApp')
         $scope.$parent.users.push(updatedUser);
         $scope.dismissModal(updatedUser)
       });
-    }
+    };
 
     $scope.update = function() {
       Users.update({userId: $scope.user._id}, $scope.user, function() {
@@ -62,15 +62,27 @@ angular.module('termPaperClientApp')
         }
         $scope.modalInstance.dismiss();
       });
-    }
+    };
 
     $scope.dismissModal = function() {
       $scope.modalInstance.dismiss();
-    }
+    };
 
-    $scope.openAccountsViewForUser = function(user) {
+    $scope.openAccountsGridForUser = function(user) {
       Users.accounts({userId: user._id}, function(accounts) {
-        console.log(accounts);
-      })
+        $scope.accounts = accounts;
+        $scope.modalInstance = $modal.open({
+          templateUrl: 'views/administer/userAccountsGrid.html',
+          controller: 'AdministerUsersCtrl',
+          scope: $scope
+        });
+      });
+    };
+
+    $scope.openAccountViewForAccount = function(account) {
+      $scope.dismissModal();
+
+      UserAccountsService.setAccount(account);
+      $location.path('/administer/account');
     }
   });

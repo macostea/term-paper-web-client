@@ -25,7 +25,7 @@
               <tr ng-repeat="user in users">
                 <td>{{user.name}}</td>
                 <td>{{user.email}}</td>
-                <td><a class="btn btn-info" ng-click="openAccountsViewForUser(user)"><i class="fa fa-credit-card"</i> Manage accounts</a></td>
+                <td><a class="btn btn-info" ng-click="openAccountsGridForUser(user)"><i class="fa fa-credit-card"</i> Manage accounts</a></td>
                 <td>
                   <a class="btn btn-warning" ng-click="openUpdateUserDialog(user)"><i class="fa fa-pencil"></i> Update</a>
                   <a class="btn btn-danger" ng-click="delete(user)"><i class="fa fa-minus"></i> Delete</a>
