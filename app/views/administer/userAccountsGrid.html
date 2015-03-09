@@ -12,10 +12,12 @@
       </tr>
       </thead>
       <tbody>
-      <tr ng-repeat="account in accounts" ng-click="openAccountViewForAccount(account)">
-        <td>{{account._id}}</td>
-        <td>{{account.currentFunds}}</td>
-      </tr>
+      <a href="#">
+        <tr ng-repeat="account in accounts" ng-click="openAccountViewForAccount(account)">
+          <td>{{account._id}}</td>
+          <td>{{account.currentFunds}}</td>
+        </tr>
+      </a>
       </tbody>
     </table>
   </div>

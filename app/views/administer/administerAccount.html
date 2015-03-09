@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container-fluid">
   <div ng-controller="AdministerAccountCtrl">
-    <div class="panel panel-primary col-md-4">
+    <div class="panel panel-primary col-md-3">
       <h2 class="panel-heading">Account details</h2>
       <form class="formAccount" name="formAccount" novalidate>
         <div class="form-group has-feedback" ng-class="{'has-error':formAccount.id.$dirty && formAccount.id.$invalid && formAccount.id.$error.required}">
@@ -14,26 +14,37 @@
 
     </div>
 
-    <div class="panel panel-primary col-md-7 col-md-offset-1">
+    <div class="panel panel-primary col-md-8 col-md-offset-1">
       <h2 class="panel-heading">Transaction report</h2>
-      <table class="table table-striped table-hover" data-effect="fade">
-        <thead>
-        <tr>
-          <th>Source ID</th>
-          <th>Destination ID</th>
-          <th>Date</th>
-          <th>Amount</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="transaction in account.pastTransactions">
-          <td>{{transaction.source._id}}</td>
-          <td>{{transaction.destination._id}}</td>
-          <td>{{transaction.date}}</td>
-          <td>{{transaction.amount}}</td>
-        </tr>
-        </tbody>
-      </table>
+        <table class="table table-striped table-hover" data-effect="fade">
+          <thead>
+          <tr>
+            <th>Source ID</th>
+            <th>Destination ID</th>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="transaction in pastTransactions">
+            <td>{{transaction.source._id}}</td>
+            <td>{{transaction.destination._id}}</td>
+            <td>{{transaction.date | amDateFormat: 'DD-MM-YYYY HH:mm'}}</td>
+            <td>{{transaction.amount}}</td>
+            <td>
+              <span class="label label-success" ng-show="transaction.status == 'approved'"><i class="fa fa-check"> Approved</i></span>
+              <span class="label label-danger" ng-show="transaction.status == 'declined'"><i class="fa fa-times"> Declined</i></span>
+              <span class="label label-info" ng-show="transaction.status == 'pending'"><i class="fa fa-info"> Pending</i></span>
+            </td>
+            <td>
+              <button class="btn btn-sm btn-success" ng-show="transaction.status == 'declined' || transaction.status == 'pending'" ng-click="updateTransactionStatus(transaction, 'approved')"><i class="fa fa-check"> Approve</i></button>
+              <button class="btn btn-sm btn-danger" ng-show="transaction.status == 'approved' || transaction.status == 'pending'" ng-click="updateTransactionStatus(transaction, 'declined')"><i class="fa fa-times"> Decline</i></button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
     </div>
   </div>
 </div>

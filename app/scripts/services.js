@@ -42,5 +42,11 @@ accountServices.factory('Accounts', ['$resource', '$rootScope',
 
 transactionServices.factory('Transactions', ['$resource', '$rootScope',
   function($resource, $rootScope) {
-    return $resource($rootScope.backendURL + '/api/transactions/:transactionId');
+    return $resource($rootScope.backendURL + '/api/transactions/:transactionId', null,
+      {
+        'updateStatus': { method: 'POST',
+                          url: $rootScope.backendURL + '/api/transactions/:transactionId/status'
+                        }
+      }
+    );
   }]);

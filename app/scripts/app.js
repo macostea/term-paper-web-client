@@ -20,7 +20,8 @@ angular
     'validation.match',
     'userServices',
     'accountServices',
-    'transactionServices'
+    'transactionServices',
+    'angularMoment'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -49,6 +50,6 @@ angular
       });
   })
   .run(function($rootScope) {
-    // $rootScope.backendURL = "https://term-paper-backend-macostea.c9.io";
+    //$rootScope.backendURL = "https://term-paper-backend-macostea.c9.io";
     $rootScope.backendURL = "https://term-paper-backend.herokuapp.com";
   });
