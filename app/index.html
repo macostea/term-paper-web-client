@@ -39,7 +39,6 @@
 
           <ul class="nav navbar-nav">
             <li ng-class="{active:isActive('/')}"><a href="#/">Home</a></li>
-            <li ng-class="{active:isActive('/about')}"><a href="#" ng-href="#/about">About</a></li>
             <li ng-class="{active:isActive('/login')}"><a href="#" ng-href="#/login">Login</a></li>
             <li ng-class="{active:isActive('/administer/users')}"><a href="#" ng-href="#/administer/users">Administer Users</a></li>
           </ul>
@@ -69,17 +68,19 @@
     <script src="bower_components/angular-validation-match/dist/angular-input-match.min.js"></script>
     <script src="bower_components/moment/moment.js"></script>
     <script src="bower_components/angular-moment/angular-moment.js"></script>
+    <script src="bower_components/ngstorage/ngStorage.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/login.js"></script>
         <script src="scripts/controllers/header.js"></script>
         <script src="scripts/controllers/administer/administerUsers.js"></script>
         <script src="scripts/controllers/administer/administerAccount.js"></script>
+        <script src="scripts/controllers/users/userAccounts.js"></script>
+        <script src="scripts/controllers/users/userManageAccount.js"></script>
         <script src="scripts/services.js"></script>
         <!-- endbuild -->
 </body>
