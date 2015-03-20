@@ -8,7 +8,11 @@
  * Controller of the termPaperClientApp
  */
 angular.module('termPaperClientApp')
-  .controller('AdministerUsersCtrl', function ($scope, $modal, $location, Users, UserAccountsService) {
+  .controller('AdministerUsersCtrl', function ($scope, $modal, $location, $localStorage, Users, UserAccountsService) {
+    if (!$localStorage.user || $localStorage.user.type !== 'admin') {
+      $location.path('/login');
+    }
+
     $scope.users = Users.query();
 
     $scope.delete = function(userToDelete) {

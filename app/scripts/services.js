@@ -13,7 +13,10 @@ userServices
       'accounts': { method: 'GET',
                     url: $rootScope.backendURL + '/api/users/:userId/accounts',
                     isArray: true
-                  }
+                  },
+      'login': { method: 'POST',
+                 url: $rootScope.backendURL + '/api/login'
+               }
     });
   }])
   .service('UserAccountsService', function () {

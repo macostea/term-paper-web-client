@@ -9,6 +9,10 @@
  */
 angular.module('termPaperClientApp')
   .controller('AdministerAccountCtrl', function ($scope, $http, Accounts, UserAccountsService, Transactions) {
+    if (!$localStorage.user || $localStorage.user.type !== 'admin') {
+      $location.path('/login');
+    }
+
     $scope.account = UserAccountsService.getAccount();
     $scope.pastTransactions = Accounts.transactions({accountId: $scope.account._id});
 

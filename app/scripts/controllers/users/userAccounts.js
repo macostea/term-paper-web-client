@@ -9,6 +9,10 @@
  */
 angular.module('termPaperClientApp')
   .controller('UserAccountsCtrl', function ($scope, $localStorage, $location, Users, UserAccountsService) {
+    if (!$localStorage.user || $localStorage.user.type !== 'default') {
+      $location.path('/login');
+    }
+
     Users.accounts({userId: $localStorage.user._id}, function(accounts) {
       $scope.accounts = accounts;
     });

@@ -8,16 +8,16 @@
  * Controller of the termPaperClientApp
  */
 angular.module('termPaperClientApp')
-  .controller('LoginCtrl', function ($scope, $http, $rootScope, $localStorage, $location) {
+  .controller('LoginCtrl', function ($scope, Users, $rootScope, $localStorage, $location) {
     $scope.login = function(user) {
-      $http.post($rootScope.backendURL + '/api/login', user).
-      success(function(data, status, headers, config) {
-          $localStorage.token = data.token;
-          $localStorage.user = data.user;
+      Users.login(user, function(data) {
+        $localStorage.token = data.token;
+        $localStorage.user = data.user;
+        if (data.user.type === 'admin') {
+          $location.path('/administer/users');
+        } else {
           $location.path('/users/accounts');
-      }).
-      error(function(data, status, headers, config) {
-        $scope.loginMessage = data;
+        }
       });
     };
   });
