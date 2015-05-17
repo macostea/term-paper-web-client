@@ -45,12 +45,12 @@ angular.module('termPaperClientApp')
     };
 
     $scope.register = function(user) {
-      var newUserResource = new Users();
+      var newUserResource = {};
       newUserResource.name = user.name;
       newUserResource.email = user.email;
       newUserResource.password = user.password;
 
-      newUserResource.$save(function(updatedUser) {
+      Users.register(newUserResource, function(updatedUser) {
         $scope.$parent.users.push(updatedUser);
         $scope.dismissModal(updatedUser)
       });
@@ -74,6 +74,7 @@ angular.module('termPaperClientApp')
 
     $scope.openAccountsGridForUser = function(user) {
       Users.accounts({userId: user._id}, function(accounts) {
+        $scope.selectedUser = user;
         $scope.accounts = accounts;
         $scope.modalInstance = $modal.open({
           templateUrl: 'views/administer/userAccountsGrid.html',
@@ -88,5 +89,15 @@ angular.module('termPaperClientApp')
 
       UserAccountsService.setAccount(account);
       $location.path('/administer/account');
-    }
+    };
+
+    $scope.addAccount = function() {
+      if ($scope.selectedUser == null) {
+        return;
+      }
+
+      Users.addAccount({userId: $scope.selectedUser._id}, {}, function(account) {
+        $scope.accounts.push(account);
+      });
+    };
   });

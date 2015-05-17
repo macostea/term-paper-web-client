@@ -8,7 +8,7 @@
  * Controller of the termPaperClientApp
  */
 angular.module('termPaperClientApp')
-  .controller('AdministerAccountCtrl', function ($scope, $http, Accounts, UserAccountsService, Transactions) {
+  .controller('AdministerAccountCtrl', function ($scope, $http, $localStorage, Accounts, UserAccountsService, Transactions) {
     if (!$localStorage.user || $localStorage.user.type !== 'admin') {
       $location.path('/login');
     }

@@ -9,6 +9,9 @@ userServices
   function($resource, $rootScope) {
     return $resource($rootScope.backendURL + '/api/users/:userId', null,
     {
+      'register': { method: 'POST' ,
+                    url: $rootScope.backendURL + '/api/register'
+                  },
       'update': { method: 'PUT' },
       'accounts': { method: 'GET',
                     url: $rootScope.backendURL + '/api/users/:userId/accounts',
@@ -16,7 +19,10 @@ userServices
                   },
       'login': { method: 'POST',
                  url: $rootScope.backendURL + '/api/login'
-               }
+               },
+      'addAccount': { method: 'POST',
+                      url: $rootScope.backendURL + '/api/users/:userId/addAccount'
+                    }
     });
   }])
   .service('UserAccountsService', function () {

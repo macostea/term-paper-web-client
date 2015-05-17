@@ -78,6 +78,7 @@ angular
     }]);
   })
   .run(function($rootScope) {
-    //$rootScope.backendURL = "https://term-paper-backend-macostea.c9.io";
-    $rootScope.backendURL = "https://term-paper-backend.herokuapp.com";
+    $rootScope.backendURL = "https://term-paper-backend-macostea.c9.io";
+    //$rootScope.backendURL = "http://130.211.53.4:90";
+    //$rootScope.backendURL = "https://term-paper-backend.herokuapp.com";
   });
