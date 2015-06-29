@@ -79,6 +79,6 @@ angular
   })
   .run(function($rootScope) {
     //$rootScope.backendURL = "https://term-paper-backend-macostea.c9.io";
-    $rootScope.backendURL = "https://secure-transfer.tutora.ro";
+    $rootScope.backendURL = "https://secure-transfer.tutora.ro/backend";
     //$rootScope.backendURL = "https://term-paper-backend.herokuapp.com";
   });
